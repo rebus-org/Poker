@@ -2,17 +2,19 @@
 
 `app.config` configuration poker.
 
-Pokes values into an app.config
+Pokes :point_left: values into :point_right: an app.config :+1:
 
 ---
+
+:question:
 
 > But why?
 
 Well..... it's probably not useful for that many things, but one thing it can do is to help with e.g. creating a "wizard-like" experience when
-condfiguring a CLI app.
+configuring a CLI app. :cake: :candy: :doughnut:
 
 Say, for instance, that one creates a nice CLI app called "my-cli", using [GoCommando](https://github.com/rebus-org/GoCommando), which is then merged into one
-single binary using [Costura](https://github.com/Fody/Costura), which is then distributed as a single `my-cli.exe` file.
+single binary using [Costura](https://github.com/Fody/Costura), which is then distributed as a single `my-cli.exe` file. Smooth! :cocktail:
 
 The configuration file `my-cli.exe.config` will then hold the configuration settings for the app.
 
@@ -46,7 +48,7 @@ and then we top it off by saving the entered values into `my-cli.exe.config` lik
 
 ---
 
-That's it.
+That's it. :clap:
 
 
 
