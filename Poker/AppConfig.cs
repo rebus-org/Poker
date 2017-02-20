@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 
 namespace Poker
 {
@@ -20,6 +22,22 @@ namespace Poker
             }
 
             return data.ToString();
+        }
+
+        /// <summary>
+        /// Loads the app.config XML of the currently executing process
+        /// </summary>
+        public static string LoadXml()
+        {
+            return File.ReadAllText(GetPath(), Encoding.UTF8);
+        }
+
+        /// <summary>
+        /// Replaces the app.config XML of the currently executing process
+        /// </summary>
+        public static void SaveXml(string xml)
+        {
+            File.WriteAllText(GetPath(), xml, Encoding.UTF8);
         }
     }
 }

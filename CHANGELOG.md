@@ -7,3 +7,7 @@
 ## 1.0.1
 
 * Add `AppConfig` helper to help with finding the current app.config
+
+## 1.0.2
+
+* Add load and save methods too
