@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Poker.Tests
@@ -330,6 +331,14 @@ namespace Poker.Tests
             var normalizedXml = NormalizeNewlines(xml);
             var normalizedExpectedXml = NormalizeNewlines(expectedXml);
 
+            Console.WriteLine($@"Here are the first characters:
+
+{string.Join(" ", normalizedXml.Take(5).Select(c => $"{(int)c:00}"))}
+
+{string.Join(" ", normalizedExpectedXml.Take(5).Select(c => $"{(int)c:00}"))}
+
+");
+
             Console.WriteLine($@"Here they are - this is the expected XML:
 
 """"""""""
@@ -343,13 +352,26 @@ and this is the actual XML:
 """"""""""
 ");
 
+
+            //Assert.That(normalizedXml, CompareConstraint.IsIdenticalTo(normalizedExpectedXml));
+
             Assert.That(normalizedXml, Is.EqualTo(normalizedExpectedXml));
         }
 
         static string NormalizeNewlines(string str)
         {
-            return string.Join(Environment.NewLine,
+            var normalizedStr = string.Join(Environment.NewLine,
                 str.Split(new[] { "\r", "\n", Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries));
+
+            // don't know how this one snuck in, but let's just remove it
+            const int utf8Bom = 65279;
+
+            if (normalizedStr.First() == utf8Bom)
+            {
+                normalizedStr = normalizedStr.Substring(1);
+            }
+
+            return normalizedStr;
         }
     }
 }

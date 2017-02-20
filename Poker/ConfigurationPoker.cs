@@ -11,6 +11,8 @@ namespace Poker
 
         public ConfigurationPoker(string appConfigXml)
         {
+            if (appConfigXml == null) throw new ArgumentNullException(nameof(appConfigXml));
+
             _xml = new XmlDocument();
 
             try
