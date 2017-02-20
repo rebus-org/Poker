@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfig.cs" />
     <Compile Include="ConfigurationPoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
