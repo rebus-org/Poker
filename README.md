@@ -36,15 +36,19 @@ The code that does this could look like this:
 
 and then we top it off by saving the entered values into `my-cli.exe.config` like this:
 
-    var xml = Poker.AppConfig.LoadXml();
-	var poker = new Poker.ConfigurationPoker(xml);
+	using Poker;
+
+	...
+
+    var xml = AppConfig.LoadXml();
+	var poker = new ConfigurationPoker(xml);
 
 	poker.SetAppSetting("api-url", url);
 	poker.SetAppSetting("api-key", key);
 
 	var newXml = poker.RenderXml();
 
-	Poker.AppConfig.SaveXml(newXml);
+	AppConfig.SaveXml(newXml);
 
 ---
 
