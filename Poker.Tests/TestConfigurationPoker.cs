@@ -50,8 +50,6 @@ namespace Poker.Tests
 
             var xml = applicator.RenderXml();
 
-            Console.WriteLine(xml);
-
             const string expectedXml = @"﻿<?xml version=""1.0"" encoding=""utf-8""?>
 <configuration>
   <appSettings>
@@ -87,7 +85,7 @@ namespace Poker.Tests
   </runtime>
 </configuration>";
 
-            Assert.That(NormalizeNewlines(xml), Is.EqualTo(NormalizeNewlines(expectedXml)));
+            AssertXmlsAreEqual(xml, expectedXml);
         }
 
         [Test]
@@ -98,8 +96,6 @@ namespace Poker.Tests
             applicator.SetAppSetting("appSetting2", "release");
 
             var xml = applicator.RenderXml();
-
-            Console.WriteLine(xml);
 
             const string expectedXml = @"﻿<?xml version=""1.0"" encoding=""utf-8""?>
 <configuration>
@@ -136,7 +132,7 @@ namespace Poker.Tests
   </runtime>
 </configuration>";
 
-            Assert.That(NormalizeNewlines(xml), Is.EqualTo(NormalizeNewlines(expectedXml)));
+            AssertXmlsAreEqual(xml, expectedXml);
         }
 
         [Test]
@@ -147,8 +143,6 @@ namespace Poker.Tests
             applicator.SetAppSetting("appSetting3", "release");
 
             var xml = applicator.RenderXml();
-
-            Console.WriteLine(xml);
 
             const string expectedXml = @"﻿<?xml version=""1.0"" encoding=""utf-8""?>
 <configuration>
@@ -186,7 +180,7 @@ namespace Poker.Tests
   </runtime>
 </configuration>";
 
-            Assert.That(NormalizeNewlines(xml), Is.EqualTo(NormalizeNewlines(expectedXml)));
+            AssertXmlsAreEqual(xml, expectedXml);
         }
 
         [Test]
@@ -197,8 +191,6 @@ namespace Poker.Tests
             applicator.SetConnectionString("connectionString1", "a_connection");
 
             var xml = applicator.RenderXml();
-
-            Console.WriteLine(xml);
 
             const string expectedXml = @"﻿<?xml version=""1.0"" encoding=""utf-8""?>
 <configuration>
@@ -235,7 +227,7 @@ namespace Poker.Tests
   </runtime>
 </configuration>";
 
-            Assert.That(NormalizeNewlines(xml), Is.EqualTo(NormalizeNewlines(expectedXml)));
+            AssertXmlsAreEqual(xml, expectedXml);
         }
 
         [Test]
@@ -246,8 +238,6 @@ namespace Poker.Tests
             applicator.SetConnectionString("connectionString2", "a_connection");
 
             var xml = applicator.RenderXml();
-
-            Console.WriteLine(xml);
 
             const string expectedXml = @"﻿<?xml version=""1.0"" encoding=""utf-8""?>
 <configuration>
@@ -284,7 +274,7 @@ namespace Poker.Tests
   </runtime>
 </configuration>";
 
-            Assert.That(NormalizeNewlines(xml), Is.EqualTo(NormalizeNewlines(expectedXml)));
+            AssertXmlsAreEqual(xml, expectedXml);
         }
 
         [Test]
@@ -295,8 +285,6 @@ namespace Poker.Tests
             applicator.SetConnectionString("connectionString3", "a_connection");
 
             var xml = applicator.RenderXml();
-
-            Console.WriteLine(xml);
 
             const string expectedXml = @"﻿<?xml version=""1.0"" encoding=""utf-8""?>
 <configuration>
@@ -334,9 +322,29 @@ namespace Poker.Tests
   </runtime>
 </configuration>";
 
-            Assert.That(NormalizeNewlines(xml), Is.EqualTo(NormalizeNewlines(expectedXml)));
+            AssertXmlsAreEqual(xml, expectedXml);
         }
 
+        static void AssertXmlsAreEqual(string xml, string expectedXml)
+        {
+            var normalizedXml = NormalizeNewlines(xml);
+            var normalizedExpectedXml = NormalizeNewlines(expectedXml);
+
+            Console.WriteLine($@"Here they are - this is the expected XML:
+
+""""""""""
+{normalizedExpectedXml}
+""""""""""
+
+and this is the actual XML:
+
+""""""""""
+{normalizedXml}
+""""""""""
+");
+
+            Assert.That(normalizedXml, Is.EqualTo(normalizedExpectedXml));
+        }
 
         static string NormalizeNewlines(string str)
         {

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Poker</id>
+    <version>$version$</version>
+    <title>Poker</title>
+    <authors>mookid8000</authors>
+    <owners>mookid8000</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/mookid8000/Debaser</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>app.config XML configuration poker</description>
+    <copyright>Copyright 2012-2016</copyright>
+    <tags>configuration app.config xml</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Poker.dll" target="lib\NET45" />
+    <file src="bin\Release\Poker.xml" target="lib\NET45" />
+  </files>
+</package>
