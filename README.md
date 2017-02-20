@@ -13,8 +13,8 @@ Pokes :point_left: values into :point_right: an app.config :+1:
 Well..... it's probably not useful for that many things, but one thing it can do is to help with e.g. creating a "wizard-like" experience when
 configuring a CLI app. :cake: :candy: :doughnut:
 
-Say, for instance, that one creates a nice CLI app called "my-cli", using [GoCommando](https://github.com/rebus-org/GoCommando), which is then merged into one
-single binary using [Costura](https://github.com/Fody/Costura), which is then distributed as a single `my-cli.exe` file. Smooth! :cocktail:
+Suppose, for instance, that one creates a nice CLI app called "my-cli", using [GoCommando](https://github.com/rebus-org/GoCommando), which is then merged into one
+single binary using [Costura](https://github.com/Fody/Costura), which is then distributed as a single `my-cli.exe` file. That would be smooth. :palm_tree: :cocktail:
 
 The configuration file `my-cli.exe.config` will then hold the configuration settings for the app.
 
