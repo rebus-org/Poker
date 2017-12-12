@@ -5,10 +5,16 @@ using System.Xml;
 
 namespace Poker
 {
+    /// <summary>
+    /// Wraps an application configuration file, allowing for in-mem mutation of it
+    /// </summary>
     public class ConfigurationPoker
     {
         readonly XmlDocument _xml;
 
+        /// <summary>
+        /// Parses the given <paramref name="appConfigXml"/> XML as an application configuration file
+        /// </summary>
         public ConfigurationPoker(string appConfigXml)
         {
             if (appConfigXml == null) throw new ArgumentNullException(nameof(appConfigXml));
@@ -25,6 +31,9 @@ namespace Poker
             }
         }
 
+        /// <summary>
+        /// Gets the value of the appsetting with the given <paramref name="key"/>
+        /// </summary>
         public string GetAppSetting(string key)
         {
             var appSetting = _xml.SelectSingleNode($"/configuration/appSettings/add[@key='{key}']");
@@ -51,6 +60,9 @@ namespace Poker
             return null;
         }
 
+        /// <summary>
+        /// Gets the value of the connection string with the given <paramref name="name"/>
+        /// </summary>
         public string GetConnectionString(string name)
         {
             var connectionString = _xml.SelectSingleNode($"/configuration/connectionStrings/add[@name='{name}']");
@@ -77,6 +89,9 @@ namespace Poker
             return null;
         }
 
+        /// <summary>
+        /// Sets the value of the appsetting with the given <paramref name="key"/>
+        /// </summary>
         public void SetAppSetting(string key, string value)
         {
             var appSetting = _xml.SelectSingleNode($"/configuration/appSettings/add[@key='{key}']");
@@ -122,6 +137,9 @@ namespace Poker
             appSettingsNode.AppendChild(xmlElement);
         }
 
+        /// <summary>
+        /// Sets the value of the connection string with the given <paramref name="name"/>
+        /// </summary>
         public void SetConnectionString(string name, string value)
         {
             var connectionString = _xml.SelectSingleNode($"/configuration/connectionStrings/add[@name='{name}']");
@@ -167,6 +185,9 @@ namespace Poker
             connectionStringsNode.AppendChild(xmlElement);
         }
 
+        /// <summary>
+        /// Renders the current state of the in-mem application configuration file into XML
+        /// </summary>
         public string RenderXml()
         {
             using (var destination = new StringWriter())

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Poker
 {
+    /// <summary>
+    /// Gives access to some useful things when working with .NET application configuration files
+    /// </summary>
     public static class AppConfig
     {
         const string AppConfigFileKey = "APP_CONFIG_FILE";
