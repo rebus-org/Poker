@@ -11,3 +11,7 @@
 ## 1.0.2
 
 * Add load and save methods too
+
+## 1.0.3
+
+* Add getters for appsettings and connection strings

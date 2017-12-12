@@ -25,6 +25,58 @@ namespace Poker
             }
         }
 
+        public string GetAppSetting(string key)
+        {
+            var appSetting = _xml.SelectSingleNode($"/configuration/appSettings/add[@key='{key}']");
+
+            if (appSetting != null)
+            {
+                var xmlAttributeCollection = appSetting.Attributes;
+
+                if (xmlAttributeCollection == null)
+                {
+                    throw new XmlException("Makes no sense because we got here by XPathing by attribute");
+                }
+
+                var existingValueAttribute = xmlAttributeCollection.OfType<XmlAttribute>().FirstOrDefault(a => a.Name == "value");
+
+                if (existingValueAttribute != null)
+                {
+                    return existingValueAttribute.Value;
+                }
+
+                return null;
+            }
+
+            return null;
+        }
+
+        public string GetConnectionString(string name)
+        {
+            var connectionString = _xml.SelectSingleNode($"/configuration/connectionStrings/add[@name='{name}']");
+
+            if (connectionString != null)
+            {
+                var xmlAttributeCollection = connectionString.Attributes;
+
+                if (xmlAttributeCollection == null)
+                {
+                    throw new XmlException("Makes no sense because we got here by XPathing by attribute");
+                }
+
+                var existingValueAttribute = xmlAttributeCollection.OfType<XmlAttribute>().FirstOrDefault(a => a.Name == "connectionString");
+
+                if (existingValueAttribute != null)
+                {
+                    return existingValueAttribute.Value;
+                }
+
+                return null;
+            }
+
+            return null;
+        }
+
         public void SetAppSetting(string key, string value)
         {
             var appSetting = _xml.SelectSingleNode($"/configuration/appSettings/add[@key='{key}']");

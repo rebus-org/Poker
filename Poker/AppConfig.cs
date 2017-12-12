@@ -29,7 +29,15 @@ namespace Poker
         /// </summary>
         public static string LoadXml()
         {
-            return File.ReadAllText(GetPath(), Encoding.UTF8);
+            var path = GetPath();
+            try
+            {
+                return File.ReadAllText(path, Encoding.UTF8);
+            }
+            catch (Exception exception)
+            {
+                throw new IOException($"Reading app.config XML from {path} failed", exception);
+            }
         }
 
         /// <summary>
@@ -37,7 +45,15 @@ namespace Poker
         /// </summary>
         public static void SaveXml(string xml)
         {
-            File.WriteAllText(GetPath(), xml, Encoding.UTF8);
+            var path = GetPath();
+            try
+            {
+                File.WriteAllText(path, xml, Encoding.UTF8);
+            }
+            catch (Exception exception)
+            {
+                throw new IOException($"Writing app.config XML to {path} failed", exception);
+            }
         }
     }
 }

@@ -43,6 +43,29 @@ namespace Poker.Tests
 </configuration>";
 
         [Test]
+        public void CanGetAppSettingsAndConnectionStringsToo()
+        {
+            var poker = new ConfigurationPoker(XmlShizzle);
+
+            var appSettingValue = poker.GetAppSetting("appSetting1");
+            var connectionStringValue = poker.GetConnectionString("connectionString1");
+
+            Assert.That(appSettingValue, Is.EqualTo("local"));
+            Assert.That(connectionStringValue, Is.EqualTo(@"host=localhost; db=fleetmanager; user id=postgres; password=postgres"));
+        }
+
+        [Test]
+        public void GetsNullOnMiss()
+        {
+            var poker = new ConfigurationPoker(XmlShizzle);
+
+            Assert.That(poker.GetAppSetting("appSetting2"), Is.Null);
+            Assert.That(poker.GetAppSetting("appSetting_does_not_exist"), Is.Null);
+            Assert.That(poker.GetConnectionString("connectionString2"), Is.Null);
+            Assert.That(poker.GetConnectionString("connectionString_does_not_exist"), Is.Null);
+        }
+
+        [Test]
         public void CanPokeXmlValuesIn_ExistingAppSetting_ExistingValueAttribute()
         {
             var applicator = new ConfigurationPoker(XmlShizzle);
