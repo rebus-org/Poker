@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <appSettings>
+        <add key="masterkey" value="bimmelimmelim" />
+        <add key="logpath" value="c:\data\fm5" />
+        <add key="backendqueue" value="" />
+        <add key="smtphost" value="" />
+        <add key="smtpport" value="" />
+        <add key="smtpuser" value="" />
+        <add key="smtppass" value="" />
+        <add key="listenurl" value="http://localhost:9000" />
+        <add key="apiurl" value="" />
+        <add key="url" value="" />
+        <add key="coldStoreContainerName" value="fm2-events" />
+        <add key="coldStoreBlockSize" value="200000" />
+    </appSettings>
+    <connectionStrings>
+        <add name="events" connectionString="mongodb://localhost/fm5-events" />
+        <add name="views" connectionString="mongodb://localhost/fm5-views" />
+        <add name="commands" connectionString="mongodb://localhost/fm5-commands" />
+        <add name="coldstore" connectionString="c:\data\fm4" />
+    </connectionStrings>
+    <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.2" />
+    </startup>
+    <runtime>
+        <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+            <dependentAssembly>
+                <assemblyIdentity name="Serilog" publicKeyToken="24c2f752a8e58a10" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="Microsoft.Owin" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-3.1.0.0" newVersion="3.1.0.0" />
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-10.0.0.0" newVersion="10.0.0.0" />
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="Castle.Windsor" publicKeyToken="407dd0808d44fbdc" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-4.0.0.0" newVersion="4.0.0.0" />
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="System.Web.Cors" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0" />
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="Castle.Core" publicKeyToken="407dd0808d44fbdc" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-4.1.1.0" newVersion="4.1.1.0" />
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="Serilog.Sinks.Console" publicKeyToken="24c2f752a8e58a10" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-3.1.1.0" newVersion="3.1.1.0" />
+            </dependentAssembly>
+        </assemblyBinding>
+    </runtime>
+</configuration>
