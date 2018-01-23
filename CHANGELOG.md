@@ -15,3 +15,7 @@
 ## 1.0.3
 
 * Add getters for appsettings and connection strings
+
+## 1.0.4
+
+* Load/Save methods that accept file paths as parameters
