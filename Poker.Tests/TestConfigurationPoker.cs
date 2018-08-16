@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Poker.Tests
 {
     [TestFixture]
-    public class TestConfigurationPoker 
+    public class TestConfigurationPoker
     {
         const string XmlShizzle = @"<?xml version=""1.0"" encoding=""utf-8""?>
 <configuration>
@@ -41,6 +41,18 @@ namespace Poker.Tests
     </assemblyBinding>
   </runtime>
 </configuration>";
+
+        [Test]
+        public void CanGetKeysAndNames()
+        {
+            var poker = new ConfigurationPoker(XmlShizzle);
+
+            var appSettingKeys = poker.GetAppSettingKeys();
+            var connectionStringNames = poker.GetConnectionStringNames();
+
+            Assert.That(appSettingKeys, Is.EqualTo(new[] { "appSetting1", "appSetting2" }));
+            Assert.That(connectionStringNames, Is.EqualTo(new[] { "connectionString1", "connectionString2" }));
+        }
 
         [Test]
         public void CanGetAppSettingsAndConnectionStringsToo()

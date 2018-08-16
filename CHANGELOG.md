@@ -19,3 +19,7 @@
 ## 1.0.4
 
 * Load/Save methods that accept file paths as parameters
+
+## 1.0.5
+
+* Can get app setting keys and connection string names

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -10,6 +11,8 @@ namespace Poker
     /// </summary>
     public class ConfigurationPoker
     {
+        static readonly List<string> EmptyList = new List<string>();
+
         readonly XmlDocument _xml;
 
         /// <summary>
@@ -29,6 +32,29 @@ namespace Poker
             {
                 throw new XmlException($"Could not parse XML: '{appConfigXml}'", exception);
             }
+        }
+
+        public IReadOnlyCollection<string> GetAppSettingKeys()
+        {
+            var appSettings = _xml.SelectNodes("/configuration/appSettings/add");
+
+            return appSettings?.Cast<XmlNode>()
+                       .Select(node =>
+                           node.Attributes?.Cast<XmlAttribute>().FirstOrDefault(a => a.Name == "key")?.Value)
+                       .Where(key => key != null)
+                       .ToList()
+                   ?? EmptyList;
+        }
+
+        public IReadOnlyCollection<string> GetConnectionStringNames()
+        {
+            var connectionStrings = _xml.SelectNodes("/configuration/connectionStrings/add");
+
+            return connectionStrings?.Cast<XmlNode>()
+                       .Select(node => node.Attributes?.Cast<XmlAttribute>().FirstOrDefault(a => a.Name == "name")?.Value)
+                       .Where(name => name != null)
+                       .ToList()
+                   ?? EmptyList;
         }
 
         /// <summary>
