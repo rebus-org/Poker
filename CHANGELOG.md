@@ -23,3 +23,7 @@
 ## 1.0.5
 
 * Can get app setting keys and connection string names
+
+## 2.0.0
+
+* Change API to be easier to use correctly

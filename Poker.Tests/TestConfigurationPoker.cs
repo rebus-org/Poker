@@ -45,7 +45,7 @@ namespace Poker.Tests
         [Test]
         public void CanGetKeysAndNames()
         {
-            var poker = new ConfigurationPoker(XmlShizzle);
+            var poker = ConfigurationPoker.ParseXml(XmlShizzle);
 
             var appSettingKeys = poker.GetAppSettingKeys();
             var connectionStringNames = poker.GetConnectionStringNames();
@@ -57,7 +57,7 @@ namespace Poker.Tests
         [Test]
         public void CanGetAppSettingsAndConnectionStringsToo()
         {
-            var poker = new ConfigurationPoker(XmlShizzle);
+            var poker = ConfigurationPoker.ParseXml(XmlShizzle);
 
             var appSettingValue = poker.GetAppSetting("appSetting1");
             var connectionStringValue = poker.GetConnectionString("connectionString1");
@@ -69,7 +69,7 @@ namespace Poker.Tests
         [Test]
         public void GetsNullOnMiss()
         {
-            var poker = new ConfigurationPoker(XmlShizzle);
+            var poker = ConfigurationPoker.ParseXml(XmlShizzle);
 
             Assert.That(poker.GetAppSetting("appSetting2"), Is.Null);
             Assert.That(poker.GetAppSetting("appSetting_does_not_exist"), Is.Null);
@@ -80,7 +80,7 @@ namespace Poker.Tests
         [Test]
         public void CanPokeXmlValuesIn_ExistingAppSetting_ExistingValueAttribute()
         {
-            var applicator = new ConfigurationPoker(XmlShizzle);
+            var applicator = ConfigurationPoker.ParseXml(XmlShizzle);
 
             applicator.SetAppSetting("appSetting1", "release");
 
@@ -127,7 +127,7 @@ namespace Poker.Tests
         [Test]
         public void CanPokeXmlValuesIn_ExistingAppSetting_NonExistentValueAttribute()
         {
-            var applicator = new ConfigurationPoker(XmlShizzle);
+            var applicator = ConfigurationPoker.ParseXml(XmlShizzle);
 
             applicator.SetAppSetting("appSetting2", "release");
 
@@ -174,7 +174,7 @@ namespace Poker.Tests
         [Test]
         public void CanPokeXmlValuesIn_NonExistentAppSetting()
         {
-            var applicator = new ConfigurationPoker(XmlShizzle);
+            var applicator = ConfigurationPoker.ParseXml(XmlShizzle);
 
             applicator.SetAppSetting("appSetting3", "release");
 
@@ -222,7 +222,7 @@ namespace Poker.Tests
         [Test]
         public void CanPokeXmlValuesIn_ExistingConnectionString_ExistingConnectionStringAttribute()
         {
-            var applicator = new ConfigurationPoker(XmlShizzle);
+            var applicator = ConfigurationPoker.ParseXml(XmlShizzle);
 
             applicator.SetConnectionString("connectionString1", "a_connection");
 
@@ -269,7 +269,7 @@ namespace Poker.Tests
         [Test]
         public void CanPokeXmlValuesIn_ExistingConnectionString_NonExistentConnectionStringAttribute()
         {
-            var applicator = new ConfigurationPoker(XmlShizzle);
+            var applicator = ConfigurationPoker.ParseXml(XmlShizzle);
 
             applicator.SetConnectionString("connectionString2", "a_connection");
 
@@ -316,7 +316,7 @@ namespace Poker.Tests
         [Test]
         public void CanPokeXmlValuesIn_NonExistentConnectionString()
         {
-            var applicator = new ConfigurationPoker(XmlShizzle);
+            var applicator = ConfigurationPoker.ParseXml(XmlShizzle);
 
             applicator.SetConnectionString("connectionString3", "a_connection");
 

@@ -44,12 +44,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="Bugs\VerifyCanReadSomeParticularAppSetting.cs" />
+    <Compile Include="TestAppConfig02.cs" />
     <Compile Include="TestAppConfig.cs" />
     <Compile Include="TestConfigurationPoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Fake\FakeApp02.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Fake\FakeApp.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

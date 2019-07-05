@@ -16,9 +16,16 @@ namespace Poker
         readonly XmlDocument _xml;
 
         /// <summary>
-        /// Parses the given <paramref name="appConfigXml"/> XML as an application configuration file
+        /// Parses the given <paramref name="xml"/> XML as an application configuration file
         /// </summary>
-        public ConfigurationPoker(string appConfigXml)
+        public static ConfigurationPoker ParseXml(string xml) => new ConfigurationPoker(xml);
+
+        /// <summary>
+        /// Reads the file at <paramref name="filePath"/> and parses its XML as an application configuratino file
+        /// </summary>
+        public static ConfigurationPoker ReadFile(string filePath) => new ConfigurationPoker(File.ReadAllText(filePath));
+
+        ConfigurationPoker(string appConfigXml)
         {
             if (appConfigXml == null) throw new ArgumentNullException(nameof(appConfigXml));
 

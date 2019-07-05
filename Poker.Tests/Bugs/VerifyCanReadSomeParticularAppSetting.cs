@@ -16,7 +16,7 @@ namespace Poker.Tests.Bugs
 
             Console.WriteLine(xml);
 
-            var poker = new ConfigurationPoker(xml);
+            var poker = ConfigurationPoker.ParseXml(xml);
 
             Assert.That(poker.GetAppSetting("masterkey"), Is.EqualTo("bimmelimmelim"));
             Assert.That(poker.GetAppSetting("logpath"), Is.EqualTo(@"c:\data\fm5"));
